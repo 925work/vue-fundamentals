@@ -10,9 +10,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   </head>
 
+  <style>
+    [v-cloak]{
+      background-color: blueviolet;
+    }
+  </style>
+
   <body>
       <div id="app">
-        <h1>{{message}}</h1>
+        <h1 v-cloak="viewed">{{message}}</h1>
+        <!--<h1 v-else>You have not viewed this page</h1>-->
       </div>
       
   </body>
@@ -23,7 +30,10 @@
       var app = new Vue({
           el: '#app',
           data:{
-              message: "Hello vue world"
+              message: "Hello vue world",
+              intro: "Welcome to the tutorial <small>it is all about vue.js</small>",
+              viewed: true,
+              viewed2: true
           }
       })
   </script>
