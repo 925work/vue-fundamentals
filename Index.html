@@ -12,13 +12,13 @@
 
   <body>
       <div id="app">
-        <h1 :title="title">{{message}}</h1>
-        <ul>
-          <li style='list-style-type: none;' v-for="count in count">item # {{count}}</li>
-        </ul>
-        <img :src="url" :alt='title' :title='title' />
-       </div>
-      
+        <h1>Hello Vue World</h1>
+        <p>
+          Visit: 
+          <a :href='url' target="_blank">{{cleanUrl}}</a>
+        </p>
+        <input type="text" class="form-control" v-model="url"/>
+        <button class="btn btn-primary" @click="humanizeURL">Humanize me</button>
   </body>
 
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -28,15 +28,14 @@
           el: '#app',
           data:{
               message: "Hello vue world",
-              title: "You loaded the page on " + new Date(),
-              url: "https://vuejs.org/images/logo.png",
-              todos: [
-                {text: 'drive car', id:1},
-                {text: 'get gas', id:2},
-                {text: 'go home', id:3},
-              ],
-              count: 10
-
+              count: 0,
+              url: '',
+              cleanUrl:''
+          },
+          methods: {
+            humanizeURL: function(){
+              this.cleanUrl = this.url.replace(/^https?:\/\//, '').replace(/\/$/, '')
+            }
           }
       })
   </script>
